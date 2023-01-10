@@ -1,0 +1,2 @@
+if(process.env.NODE_ENV === 'production')   module.exports = require('./prod') // NODE_ENV가 배포상태일때는 production으로 되어있음
+else                                        module.exports = require('./dev') // local에서는 아님
