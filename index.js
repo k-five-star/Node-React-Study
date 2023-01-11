@@ -17,15 +17,18 @@ app.get('/', (req, res) => {
   res.send('Hello World! 새해 복 많이 받으세요!!')
 })
 
-// app.post('/register', async (request, reponse) => {
-//     //회원 가입시 필요한 정보들을 클라이언트에서 가져오면
-//     //그것들을 DB에 넣어준다.
-//     console.log(request.body)
+app.post('/register', async (request, response) => {
+    //회원 가입시 필요한 정보들을 클라이언트에서 가져오면
+    //그것들을 DB에 넣어준다.
+    console.log(request.body)
 
-//     const user = await new User(request.body)
+    const user = await new User(request.body)
 
-//     await user.save()
-// })
+    await user.save((err, userInfo) => {
+      if(err) return response.json({success : false, err})
+      else    return response.status(200).json({success : true})
+    })
+})
 
 
 
